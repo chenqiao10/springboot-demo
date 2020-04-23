@@ -32,7 +32,7 @@ public class TestController {
 	
 	@RequestMapping("/show")
 	public String show(){
-	    
+	    System.out.println("show");
 	    logger.info(redisTemplate.opsForValue().get("test").toString());
 		return "Hello World";		
 	}
