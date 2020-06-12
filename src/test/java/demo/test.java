@@ -1,11 +1,14 @@
 package demo;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import cn.hutool.core.convert.Convert;
 
 public class test
 {
 	public static void main(String[] args)
 	{
+		 String pass= new BCryptPasswordEncoder().encode("11"); System.out.println(pass);
 		/*
 		 * String pass= new BCryptPasswordEncoder().encode("11"); System.out.println(pass);
 		 */
