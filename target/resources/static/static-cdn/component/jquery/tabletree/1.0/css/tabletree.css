@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+.treetable {width:100%!important;width:99%;border-collapse: collapse;border: dotted #e3e3e3;border-width: 1px 0 0 1px;text-align: center;}
+.treetable td {line-height: 24px;padding: 0 2px;border: dotted #e3e3e3;border-width: 0 1px 1px 0;}
+.trover{background-color: #FFF5D7;}
+.tree-hit {cursor: pointer;}
+.tree-expanded, .tree-collapsed, .tree-folder, .tree-file, .tree-indent {
+    display: inline-block;
+    height: 18px;
+    overflow: hidden;
+    vertical-align: top;
+    width: 16px;
+}
+.tree-expanded {
+    background: url("../images/tree_icons.png") no-repeat scroll -18px 0 transparent;
+}
+.tree-expanded-hover {
+    background: url("../images/tree_icons.png") no-repeat scroll -50px 0 transparent;
+}
+.tree-collapsed {
+    background: url("../images/tree_icons.png") no-repeat scroll 0 0 transparent;
+}
+.tree-collapsed-hover {
+    background: url("../images/tree_icons.png") no-repeat scroll -32px 0 transparent;
+}
+.tree-lines .tree-expanded, .tree-lines .tree-root-first .tree-expanded {
+    background: url("../images/tree_icons.png") no-repeat scroll -144px 0 transparent;
+}
+.tree-lines .tree-collapsed, .tree-lines .tree-root-first .tree-collapsed {
+    background: url("../images/tree_icons.png") no-repeat scroll -128px 0 transparent;
+}
+.tree-lines .tree-node-last .tree-expanded, .tree-lines .tree-root-one .tree-expanded {
+    background: url("../images/tree_icons.png") no-repeat scroll -80px 0 transparent;
+}
+.tree-lines .tree-node-last .tree-collapsed, .tree-lines .tree-root-one .tree-collapsed {
+    background: url("../images/tree_icons.png") no-repeat scroll -64px 0 transparent;
+}
+.tree-line {
+    background: url("../images/tree_icons.png") no-repeat scroll -176px 0 transparent;
+}
+.tree-join {
+    background: url("../images/tree_icons.png") no-repeat scroll -192px 0 transparent;
+}
+.tree-joinbottom {
+    background: url("../images/tree_icons.png") no-repeat scroll -160px 0 transparent;
+}
+.tree-folder {
+    background: url("../images/tree_icons.png") no-repeat scroll -208px 0 transparent;
+}
+.tree-folder-open {
+    background: url("../images/tree_icons.png") no-repeat scroll -224px 0 transparent;
+}
+.tree-file {
+    background: url("../images/tree_icons.png") no-repeat scroll -240px 0 transparent;
+}
+.tree-title-star {color: #ff3333;}

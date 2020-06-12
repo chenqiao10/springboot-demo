@@ -1,0 +1,41 @@
+.ac_results {
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y:auto;
+	z-index: 99999;
+	*height:250px;
+	background-color: white;
+	*background:none;
+}
+
+.ac_results ul {
+	width: 100%; 
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	background-color: white;
+	border: 1px solid #ddd;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	width: 100%;
+	font: menu;
+	font-size: 12px;
+	line-height: 180%;
+	overflow: hidden;
+	*padding:2px 0;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #00B65F;
+	color: white;
+}

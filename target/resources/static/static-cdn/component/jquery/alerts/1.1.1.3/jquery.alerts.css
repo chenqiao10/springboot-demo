@@ -1,0 +1,46 @@
+#popup_container {
+	font-family:"microsoft yahei",Arial,sans-serif;
+	font-size: 12px;
+	color: #000;
+	width:auto!important;
+	width: 325px;
+    min-width: 325px;
+	height:auto!important;
+	height: 100px;
+    min-height: 100px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	background-color: #fff;
+}
+#popup_title {
+	height:40px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #fff;
+	text-align: left;
+	line-height:40px;
+	background-color: #00B65F;
+	padding-left: 20px;
+	margin: 0;
+	border-radius:4px 4px 0 0;
+}
+#popup_content {
+	padding: 10px 5px 15px 5px;
+	margin: 0 auto;
+	background-color:#fff;
+	border-radius:4px;
+}
+.alert {background: 15px 15px no-repeat url(images/green-info.png);}
+.confirm {background: 15px 15px no-repeat url(images/green-help.png);}
+.prompt {background: 15px 15px no-repeat url(images/important.gif);}
+#popup_message {padding-left:80px; padding-right:15px;font-size:14px; line-height:22px;}
+#popup_panel {text-align: center;margin: 15px 0 5px 5px;}
+#popup_panel input{height:26px; padding:0 12px; margin:0 5px; font-size:14px; line-height:26px;  border-radius:4px; border:1px solid #00B65F; cursor: pointer;}
+#popup_prompt {width:200px;}
+#popup_ok{ color:#fff; background-color: #00B65F; }
+#popup_cancel{ color:#00B65F; background-color: #fff;}
+
+#popup_load{text-align: center;padding-top:55px;padding-bottom: 20px;}
+.load{ background: url(../../../../images/load/processing.gif) no-repeat center 20px;color: #AC8C7B;}
+.wait{background: url(../../../../images/waiting.gif) no-repeat top center;color: #999;}

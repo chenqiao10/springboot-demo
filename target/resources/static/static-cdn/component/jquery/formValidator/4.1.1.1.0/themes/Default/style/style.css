@@ -1,0 +1,7 @@
+.onShow,.onFocus,.onCorrect,.onLoad,.onError{ display:inline-block;*display:inline;_zoom:1; padding:1px 0 1px 36px; font-size: 12px; color:#999; background:url(../images/sprites.gif) no-repeat;}
+.onShow{background-position:12px -76px;}
+.onFocus{background-position:12px -122px;}
+.onError{ background-position:12px 3px; _background-position:12px 1px;}
+.onCorrect{background-position:12px -35px; _background-position:12px -37px;}
+.onLoad{background:url(../images/onLoad.gif) no-repeat 1px;}
+.inputOnShow{color: #999;}

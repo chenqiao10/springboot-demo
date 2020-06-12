@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset=utf-8 />
+	<title>ColorBox Examples</title>
+	<style type="text/css">
+		body{font:12px/1.2 Verdana, sans-serif; padding:0 10px;}
+		a:link, a:visited{text-decoration:none; color:#416CE5; border-bottom:1px solid #416CE5;}
+		h2{font-size:13px; margin:15px 0 0 0;}
+	</style>
+	<link media="screen" rel="stylesheet" href="../../colorbox.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="../jquery.colorbox.js"></script>
+	<script>
+		$(document).ready(function(){
+			//Examples of how to assign the ColorBox event to elements
+			$("a[rel='example1']").colorbox();
+			$("a[rel='example2']").colorbox({transition:"fade"});
+			$("a[rel='example3']").colorbox({transition:"none", width:"75%", height:"75%"});
+			$("a[rel='example4']").colorbox({slideshow:true});
+			$(".example5").colorbox();
+			$(".example6").colorbox({iframe:true, innerWidth:425, innerHeight:344});
+			$(".example7").colorbox({width:"80%", height:"80%", iframe:true});
+			$(".example8").colorbox({width:"50%", inline:true, href:"#inline_example1"});
+			$(".example9").colorbox({
+				onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+				onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+				onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+				onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+				onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+			});
+			
+			//Example of preserving a JavaScript event for inline calls.
+			$("#click").click(function(){ 
+				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>ColorBox Demonstration</h1>
+	
+	<h2>Elastic Transition</h2>
+	<p><a href="../content/ohoopee1.jpg" rel="example1" title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>
+	<p><a href="../content/ohoopee2.jpg" rel="example1" title="On the Ohoopee as a child">Grouped Photo 2</a></p>
+	<p><a href="../content/ohoopee3.jpg" rel="example1" title="On the Ohoopee as an adult">Grouped Photo 3</a></p>
+	
+	<h2>Fade Transition</h2>
+	<p><a href="../content/ohoopee1.jpg" rel="example2" title="Me and my grandfather on the Ohoopee">Grouped Photo 1</a></p>
+	<p><a href="../content/ohoopee2.jpg" rel="example2" title="On the Ohoopee as a child">Grouped Photo 2</a></p>
+	<p><a href="../content/ohoopee3.jpg" rel="example2" title="On the Ohoopee as an adult">Grouped Photo 3</a></p>
+	
+	<h2>No Transition + fixed width and height (75% of screen size)</h2>
+	<p><a href="../content/ohoopee1.jpg" rel="example3"  title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>
+	<p><a href="../content/ohoopee2.jpg" rel="example3"  title="On the Ohoopee as a child">Grouped Photo 2</a></p>
+	<p><a href="../content/ohoopee3.jpg" rel="example3"  title="On the Ohoopee as an adult">Grouped Photo 3</a></p>
+	
+	<h2>Slideshow</h2>
+	<p><a href="../content/ohoopee1.jpg" rel="example4"  title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>
+	<p><a href="../content/ohoopee2.jpg" rel="example4"  title="On the Ohoopee as a child">Grouped Photo 2</a></p>
+	<p><a href="../content/ohoopee3.jpg" rel="example4"  title="On the Ohoopee as an adult">Grouped Photo 3</a></p>
+	
+	<h2>Other Content Types</h2>
+	<p><a class='example5' href="../content/ajax.html" title="Homer Defined">Outside HTML (Ajax)</a></p>
+	<p><a class='example5' href="../content/flash.html" title="Royksopp: Remind Me">Flash / Video (Ajax/Embedded)</a></p>
+	<p><a class='example6' href="http://www.youtube.com/embed/617ANIA5Rqs?rel=0&amp;wmode=transparent" title="The Knife: We Share Our Mother's Health">Flash / Video (Iframe/Direct Link To YouTube)</a></p>
+	<p><a class='example7' href="http://google.com">Outside Webpage (Iframe)</a></p>
+	<p><a class='example8' href="#" title="修改班级信息">Inline HTML</a></p>
+	
+	<h2>Demonstration of using callbacks</h2>
+	<p><a class='example9' href="../content/marylou.jpg" title="Marylou on Cumberland Island">Example with alerts</a>. Callbacks and event-hooks allow users to extend functionality without having to rewrite parts of the plugin.</p>
+	
+	<!-- This contains the hidden content for inline calls -->
+	<div style='display:none'>
+		<div id='inline_example1'>
+		<table>
+			<tr>
+				<td width="60" height="25">所属年级：</td>
+				<td>一年级</td>
+			</tr>
+			<tr>
+				<td height="25">班级名称：</td>
+				<td><input style="width: 120px;" name="schoolClass.schoolClassName" id="id_schoolClass_schoolClassName" value="1班" type="text"></td>
+			</tr>
+			<tr>
+				<td height="25">班级类型：</td>
+				<td>
+				<span><input name="schoolClass.schoolClassType.schoolClassTypeID" id="id_schoolClassTypeID_10" value="10" type="radio"><label for="id_schoolClassTypeID_10">&nbsp;普通班&nbsp;&nbsp;</label></span>
+				<span><input name="schoolClass.schoolClassType.schoolClassTypeID" id="id_schoolClassTypeID_11" value="11" type="radio"><label for="id_schoolClassTypeID_11">&nbsp;实验班&nbsp;&nbsp;</label></span>
+				</td>
+			</tr>
+		</table>
+		<div style="text-align: center;"><input id="id_btn" value="保 存" title="保存班级信息" type="submit"></div>
+		<a id="click" href="#" style='padding:5px; background:#ccc;'>Click me, it will be preserved!</a>
+		<br/><br/><br/><br/>
+		</div>
+	</div>
+</body>
+</html>
