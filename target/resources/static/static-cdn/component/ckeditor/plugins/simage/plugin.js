@@ -80,7 +80,6 @@ CKEDITOR.plugins.add( 'simage', {
 					}).success((function(_this) {
 						return function(data, textStatus, jqXHR) {
 							var isNew;
-							console.log(data);
 							data = JSON.parse(data)
 							if (jqXHR.status == 200) {
 								CKEDITOR.instances[curr.name].setReadOnly(false)

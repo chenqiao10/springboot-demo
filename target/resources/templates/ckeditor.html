@@ -7,13 +7,94 @@
     <script type="text/JavaScript" src="static-cdn/component/ckeditor/ckeditor.js"></script>
 </head>
 <body>
-<textarea id="id_sheetTitleContent1" style="width:100px;height: 100px" contenteditable="true" class="edit_paper">12321</textarea>
-<textarea id="id_sheetTitleContent2" style="width:100px;height: 100px" class="edit_paper"><p><span style="font-size:small;color:#ff6600;"><strong>登幽州台歌</strong></span></p> </textarea>
+ <div id="id_sheetTitleContent1" style="width:1000px;height: 100px" class="edit_paper" contenteditable="true"></div> 
+<div id="id_sheetTitleContent2" class="edit_paper" contenteditable="true"><p><span style="font-size:small;color:#ff6600;" ><strong>登幽州台歌</strong></span></p> </div>
 <textarea id="id_sheetTitleContent3" style="width:100px;height: 100px" class="edit_paper">21321</textarea>
 <script type="text/JavaScript">
 $(function (){
-    var toolbar =[
-        { name: 'insert', items : [ 'SImage'] }]
+	 function pasteImage(target) {
+        var jTarget = document.getElementById(target);
+        if (navigator.userAgent.indexOf('Firefox') >= 0) {	// 火狐浏览器默认支持粘贴图片文件：保存形式为base64编码字符串，需要处理成物理图片保存在服务器上
+            jTarget.onpaste = function (e) {
+                setTimeout(function () {
+                    $("#" + target).find("img").each(function (i, n) {
+                        var $curImg = $(n);
+                        var src = $curImg.attr("src");
+                        if (src.search(/data:.+;base64,/) > -1) {
+                        	$curImg.attr("data-ke-src",_sheet.base + "/" + _sheet.cdn + "/images/load.gif").attr("src",_sheet.base + "/" + _sheet.cdn + "/images/load.gif");
+                        	$.ajax({
+                                type: "post",
+                                url: "sheet/update64",
+                                data: "data=" + encodeURIComponent(src) + "&sheetID=" + _sheet.ID,
+                                async: false,
+                                cache: false,
+                                success: function (result) {
+                                	$curImg.attr("data-ke-src", _sheet.base + result).attr("src",  _sheet.base + result);
+                                    return false;
+                                },
+                                error: function () {
+                                    jAlert("服务器没有返回数据，可能服务器忙，请重试", "温馨提示");
+                                }
+                            });
+                        }
+                    });
+                }, 80);
+                e.preventDefault();
+                return false;
+            };
+        } else if (window.navigator.userAgent.indexOf("Chrome") !== -1) {	// 谷歌浏览器
+            jTarget.onpaste = function (e) {
+                var cbd = e.clipboardData;
+                if (!cbd) {	// 判断浏览器是否支持 clipborardData
+                    return false;
+                }
+                var item = cbd.items[0];
+                console.log(cbd);
+                if (item.kind == "file") {
+                    var blob = item.getAsFile();
+                    if (blob.size === 0) {
+                        return;
+                    }
+
+                    var reader = new FileReader(); 						// 通过FileReader 读取blob类型
+                    reader.readAsDataURL(blob);
+                    reader.onload = function () {
+                        var result = this.result; 						// base64编码
+                        $.ajax({
+                            type: "post",
+                            url: "sheet/update64",
+                            data: "data=" + encodeURIComponent(result) + "&sheetID=" + _sheet.ID,
+                            async: false,
+                            cache: false,
+                            success: function (result) {
+                                var html = '<img src="' + _sheet.base + result + '" alt="" />';
+                                CKEDITOR.instances[target].insertHtml(html);
+                                return false;
+                            },
+                            error: function () {
+                                jAlert("服务器没有返回数据，可能服务器忙，请重试", "温馨提示");
+                            }
+                        });
+                    };
+                }
+                e.preventDefault();
+                return false;
+            };
+        }
+    }
+    var toolbar = [
+        { name: 'colors', items : [ 'TextColor','BGColor' ] }   ,
+     
+        { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript'] },
+        { name: 'paragraph', items : [ 
+        '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
+        { name: 'insert', items : [ 'HorizontalRule',] },
+        '/',
+        { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+ 
+        { name: 'insert', items : [ 'SImage'] }] 
+       
+       
   
  
     CKEDITOR.inline("id_sheetTitleContent1", {
@@ -21,6 +102,32 @@ $(function (){
         imageUploadURL: 'http://172.16.1.18:8081/demo/uploadImage',
         toolbar: toolbar
     });
+    CKEDITOR.inline("id_sheetTitleContent2", {
+        image_previewText: ' ',
+        imageUploadURL: 'http://172.16.1.18:8081/demo/uploadImage',
+        toolbar: toolbar
+    });
+    var editor = CKEDITOR.instances["id_sheetTitleContent1"];
+    editor.setData("<p><span style=\"font-size:small;color:#ff6600;\"><strong>登幽州台歌</strong></span></p>");
+   
+    editor.on("instanceReady", function (evt) {
+        pasteImage(editor.name);
+       /*  evt.editor.on('paste', function(ev) {
+        	console.log(ev);
+        if (evt.data.type == 'html') {
+            // when paste as plain text or direct paste in ckeditor body.  
+        }
+        if (evt.data.type == 'text') {
+            // when paste as text or paste from word.  
+        } */
+    /* }); */
+       /*  for(name in CKEDITOR.instances) 
+        { 
+            CKEDITOR.instances[name].destroy();
+        }  */
+    });
+    //修改数据
+    console.log(1); 
 });
 </script>
 </body>

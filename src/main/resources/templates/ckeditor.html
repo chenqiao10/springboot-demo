@@ -8,8 +8,9 @@
 </head>
 <body>
  <div id="id_sheetTitleContent1" style="width:1000px;height: 100px" class="edit_paper" contenteditable="true"></div> 
-<div id="id_sheetTitleContent2" class="edit_paper" contenteditable="true"><p><span style="font-size:small;color:#ff6600;" ><strong>登幽州台歌</strong></span></p> </div>
+<div id="id_sheetTitleContent2" class="edit_paper" style="width:900px;height: 100px;" contenteditable="true"><p><span style="font-size:small;color:#ff6600;" ><strong>登幽州台歌</strong></span></p> </div>
 <textarea id="id_sheetTitleContent3" style="width:100px;height: 100px" class="edit_paper">21321</textarea>
+<div class="test" style="width:600px;height: 100px;background-color: grey;"></div><input type="button" class="btn" value="btn">
 <script type="text/JavaScript">
 $(function (){
 	 function pasteImage(target) {
@@ -84,12 +85,12 @@ $(function (){
     }
     var toolbar = [
         { name: 'colors', items : [ 'TextColor','BGColor' ] }   ,
-        { name: 'clipboard', items : [ 'PasteText','PasteFromWord' ] },
+     
         { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript'] },
         { name: 'paragraph', items : [ 
         '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
         { name: 'insert', items : [ 'HorizontalRule',] },
-        '/',
+     
         { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
  
         { name: 'insert', items : [ 'SImage'] }] 
@@ -107,8 +108,8 @@ $(function (){
         imageUploadURL: 'http://172.16.1.18:8081/demo/uploadImage',
         toolbar: toolbar
     });
-    var editor = CKEDITOR.instances["id_sheetTitleContent1"];
-    editor.setData("<p><span style=\"font-size:small;color:#ff6600;\"><strong>登幽州台歌</strong></span></p>");
+    var editor = CKEDITOR.instances["id_sheetTitleContent2"];
+   
    
     editor.on("instanceReady", function (evt) {
         pasteImage(editor.name);
@@ -127,7 +128,10 @@ $(function (){
         }  */
     });
     //修改数据
-    console.log(1); 
+    $(".btn").click(function(){
+    	console.log(editor.getData());
+    	$(".test").html(editor.getData());
+    }); 
 });
 </script>
 </body>
