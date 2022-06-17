@@ -23,7 +23,7 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<java.version>1.8</java.version>
 		
-		<fastjson.version>1.2.62</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<poi.version>3.14</poi.version>
 		<hutool.version>5.1.0</hutool.version>
 	</properties>
